@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { generalPage } from '../data/pageObjects/generalPage';
+import { acceptCookies } from '../actions/cookieActions';
 
 test.describe('Auth flow', () => {
   const randomId = new Date().getTime()
@@ -11,19 +12,14 @@ test.describe('Auth flow', () => {
 
 test('should register and then login with new user', async ({ page }) => {
     await page.goto('/');
-    //cookie accept
-    await page.waitForLoadState('networkidle');
-    await Promise.all([
-        page.waitForResponse(resp => resp.url().includes('cookieModal') && resp.status() === 200),
-        page.locator(generalPage.btnCookieAccept).click(),
-    ]);
+    await acceptCookies(page);
 
     //create a new user
-    await page.locator(generalPage.btnLogin).click();
+    await page.locator(generalPage.btnLogin).click();   
     await page.locator(generalPage.btnSignUp).click();
     await page.fill(generalPage.inpSignUpEmail, test.info().project.name + user.email)
     await page.fill(generalPage.inpSignUpPassword, user.password)
-    await page.locator(generalPage.btnSignUpTerms).dispatchEvent('click');
+    await page.locator(generalPage.btnSignUpTerms).click();
     await page.locator(generalPage.btnSignUpRegister).click();
     await expect(page.locator(generalPage.btnSignUpRegister)).not.toBeVisible();
 

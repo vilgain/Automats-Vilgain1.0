@@ -14,3 +14,5 @@ export const generalPage = {
     inpLoginPassword: '[data-pwid="inp_login_pwd"]',
     btnLoginSubmit: '[data-pwid="btn_login_submit"]',
     } as const;
+
+            
