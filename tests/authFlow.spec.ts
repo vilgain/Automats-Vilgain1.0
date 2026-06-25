@@ -30,7 +30,7 @@ test('should register and then login with new user', async ({ page }) => {
 
     //check if user is logged out and log in with the same user
     await expect(page.locator(generalPage.btnUserInfo)).not.toBeVisible();
-    await page.waitForLoadState('networkidle'); //clickable?
+    await page.waitForLoadState('networkidle'); 
     await page.locator(generalPage.btnLogin).click();
     await page.fill(generalPage.inpLoginEmail, test.info().project.name + user.email)
     await page.fill(generalPage.inpLoginPassword, user.password)
