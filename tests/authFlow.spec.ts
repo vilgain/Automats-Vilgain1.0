@@ -3,14 +3,14 @@ import { generalPage } from '../data/pageObjects/generalPage';
 import { acceptCookies } from '../actions/cookieActions';
 
 test.describe('Auth flow', () => {
-  const randomId = new Date().getTime()
+  const randomId = Date.now()
 
   const user = {
     email: `${randomId}@mustang.com`,
     password: '@aA123456789',
   }
 
-test('should register and then login with new user', async ({ page }) => {
+test('should create a new user and try to login', async ({ page }) => {
     await page.goto('/');
     await acceptCookies(page);
 
@@ -41,4 +41,6 @@ test('should register and then login with new user', async ({ page }) => {
     await page.locator(generalPage.btnUserInfo).click();
     await expect(page.locator(generalPage.txtUserEmail)).toHaveText(test.info().project.name + user.email);
     })
+
 }); 
+
