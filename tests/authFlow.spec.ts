@@ -1,12 +1,13 @@
 import { test, expect } from '@playwright/test';
 import { generalPage } from '../data/pageObjects/generalPage';
 import { acceptCookies } from '../actions/cookieActions';
+import { deleteLoggedUser } from '../actions/userActions';
 
 test.describe('Auth flow', () => {
   const randomId = Date.now()
 
   const user = {
-    email: `${randomId}@mustang.com`,
+    email: `${randomId}@pwtest.com`,
     password: '@aA123456789',
   }
 
@@ -40,6 +41,8 @@ test('should create a new user and try to login', async ({ page }) => {
     //check if user is logged in
     await page.locator(generalPage.btnUserInfo).click();
     await expect(page.locator(generalPage.txtUserEmail)).toHaveText(test.info().project.name + user.email);
+
+    await deleteLoggedUser(page); //delete the user after the test is done
     })
 
 }); 

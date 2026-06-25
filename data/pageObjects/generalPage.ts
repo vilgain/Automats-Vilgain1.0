@@ -13,6 +13,6 @@ export const generalPage = {
     inpLoginEmail: '[data-pwid="inp_login_email"]',
     inpLoginPassword: '[data-pwid="inp_login_pwd"]',
     btnLoginSubmit: '[data-pwid="btn_login_submit"]',
+    btnUserSettings: '[data-pwid="btn_general_account-settings"]',
     } as const;
 
-            
