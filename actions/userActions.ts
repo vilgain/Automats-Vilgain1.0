@@ -8,6 +8,7 @@ export async function deleteLoggedUser(page: Page) { //deletes the currently log
     await page.locator(generalPage.btnUserInfo).click();
     await page.locator(generalPage.btnUserSettings).waitFor({ state: 'visible' });
     await page.locator(generalPage.btnUserSettings).click();
+    await page.waitForLoadState('networkidle');
     await page.locator(accountPage.btnDeleteAccount).scrollIntoViewIfNeeded();
     await page.locator(accountPage.btnDeleteAccount).click();
     await page.locator(accountPage.btnDeleteConfirm).click(); 

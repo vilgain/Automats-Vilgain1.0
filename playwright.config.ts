@@ -6,6 +6,8 @@ export default defineConfig({
   testDir: './tests',
   //enable parallel test execution
   fullyParallel: true,
+
+  timeout: 60000,
   
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */

@@ -14,5 +14,10 @@ export const generalPage = {
     inpLoginPassword: '[data-pwid="inp_login_pwd"]',
     btnLoginSubmit: '[data-pwid="btn_login_submit"]',
     btnUserSettings: '[data-pwid="btn_general_account-settings"]',
+    inpProductSearch: '[data-pwid="inp_general_search"]',
+    txtSearchResult: '[data-pwid="txt_general_search_result"]',
+    btnHealthyNutrition: '[data-pwid="btn_general_healthy-nutrition"]',
+    btnGeneralSubcategory: '[data-pwid="btn_general_subcat"]',
+    btnProduct: '[data-pwid="btn_general_product"]',
     } as const;
 
