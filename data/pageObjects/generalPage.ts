@@ -19,5 +19,10 @@ export const generalPage = {
     btnHealthyNutrition: '[data-pwid="btn_general_healthy-nutrition"]',
     btnGeneralSubcategory: '[data-pwid="btn_general_subcat"]',
     btnProduct: '[data-pwid="btn_general_product"]',
+    btnAddToCart: '[data-pwid="btn_general_add_to_cart"]',
+    btnCartPlus: '[data-pwid="btn_general_add_to_cart_plus"]',
+    btnCartMinus: '[data-pwid="btn_general_add_to_cart_minus"]',
+    inpCartQuantity: '[data-pwid="txt_general_add_to_cart_quantity"]',
+    btnCartOpen: '[data-pwid="btn_general_cart"]',
     } as const;
 
