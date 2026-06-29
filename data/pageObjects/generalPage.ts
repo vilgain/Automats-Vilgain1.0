@@ -24,5 +24,6 @@ export const generalPage = {
     btnCartMinus: '[data-pwid="btn_general_add_to_cart_minus"]',
     inpCartQuantity: '[data-pwid="txt_general_add_to_cart_quantity"]',
     btnCartOpen: '[data-pwid="btn_general_cart"]',
+    txtToast: '[data-pwid="txt_general_notification"]',
     } as const;
 
