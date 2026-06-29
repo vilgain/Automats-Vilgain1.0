@@ -33,7 +33,7 @@ test('should create a new user and try to login', async ({ page }) => {
     await expect(page.locator(generalPage.txtUserEmail)).toHaveText(test.info().project.name + user.email);
     await page.locator(generalPage.btnLogout).click();
 
-    //check if user is logged out and log in with the same user
+    //check if user is logged out and log in with the same user 
     await expect(page.locator(generalPage.btnUserInfo)).not.toBeVisible();
     await page.waitForLoadState('networkidle');
     await page.locator(generalPage.btnLogin).click();
