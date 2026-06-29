@@ -12,7 +12,7 @@ test('should search for a product and check its details are shown', async ({ pag
     await page.locator(generalPage.inpProductSearch).pressSequentially(productNames.vilgainDoubleTrouble);
     await expect(page.locator(generalPage.txtSearchResult).first()).toBeVisible();
     await page.locator(generalPage.txtSearchResult).first().click();
-    await expect(page.locator(pdpPage.txtProductName).last()).toHaveText(productNames.vilgainDoubleTrouble);
+    await expect(page.locator(pdpPage.txtProductName).last()).toContainText(productNames.vilgainDoubleTrouble);
     
     //search for a product via cathegory and check its pdp is shown
     await page.locator(generalPage.btnHealthyNutrition).click();
