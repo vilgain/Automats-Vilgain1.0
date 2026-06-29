@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { acceptCookies } from '../actions/cookieActions';
 import { generalPage } from '../data/pageObjects/generalPage';
-import { productNames } from '../data/staticData/product/productNames';
+import { productNames } from '../data/staticData/products/productNames';
 import { pdpPage } from '../data/pageObjects/pdpPage';
 
 test('should search for a product and check its details are shown', async ({ page }) => {

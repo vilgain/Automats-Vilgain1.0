@@ -25,5 +25,6 @@ export const generalPage = {
     inpCartQuantity: '[data-pwid="txt_general_add_to_cart_quantity"]',
     btnCartOpen: '[data-pwid="btn_general_cart"]',
     txtToast: '[data-pwid="txt_general_notification"]',
+    txtProductModule: '[data-pwid="txt_general_module_product"]',
     } as const;
 

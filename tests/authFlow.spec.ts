@@ -4,46 +4,48 @@ import { acceptCookies } from '../actions/cookieActions';
 import { deleteLoggedUser } from '../actions/userActions';
 
 test.describe('Auth flow', () => {
-  const randomId = Date.now()
+  const randomId = Date.now()
 
-  const user = {
-    email: `${randomId}@pwtest.com`,
-    password: '@aA123456789',
-  }
+  const user = {
+    email: `${randomId}@pwtest.com`,
+    password: '@aA123456789',
+  }
+
+test.afterEach(async ({ page }) => {
+    await deleteLoggedUser(page);
+  });
 
 test('should create a new user and try to login', async ({ page }) => {
-    await page.goto('/');
-    await acceptCookies(page);
+    await page.goto('/');
+    await acceptCookies(page);
 
-    //create a new user
-    await page.locator(generalPage.btnLogin).click();   
-    await page.locator(generalPage.btnSignUp).click();
-    await page.fill(generalPage.inpSignUpEmail, test.info().project.name + user.email)
-    await page.fill(generalPage.inpSignUpPassword, user.password)
-    await page.locator(generalPage.btnSignUpTerms).click();
-    await page.locator(generalPage.btnSignUpRegister).click();
-    await expect(page.locator(generalPage.btnSignUpRegister)).not.toBeVisible();
+    //create a new user
+    await page.locator(generalPage.btnLogin).click();
+    await page.locator(generalPage.btnSignUp).click();
+    await page.locator(generalPage.inpSignUpEmail).fill(test.info().project.name + user.email)
+    await page.locator(generalPage.inpSignUpPassword).fill(user.password)
+    await page.locator(generalPage.btnSignUpTerms).click();
+    await page.locator(generalPage.btnSignUpRegister).click();
+    await expect(page.locator(generalPage.btnSignUpRegister)).not.toBeVisible();
 
-    //check if user is logged in and log out
-    await page.locator(generalPage.btnUserInfo).click();
-    await expect(page.locator(generalPage.txtUserEmail)).toHaveText(test.info().project.name + user.email);
-    await page.locator(generalPage.btnLogout).click();
+    //check if user is logged in and log out
+    await page.locator(generalPage.btnUserInfo).click();
+    await expect(page.locator(generalPage.txtUserEmail)).toHaveText(test.info().project.name + user.email);
+    await page.locator(generalPage.btnLogout).click();
 
-    //check if user is logged out and log in with the same user
-    await expect(page.locator(generalPage.btnUserInfo)).not.toBeVisible();
-    await page.waitForLoadState('networkidle'); 
-    await page.locator(generalPage.btnLogin).click();
-    await page.fill(generalPage.inpLoginEmail, test.info().project.name + user.email)
-    await page.fill(generalPage.inpLoginPassword, user.password)
-    await page.locator(generalPage.btnLoginSubmit).click();
-    await expect(page.locator(generalPage.btnLoginSubmit)).not.toBeVisible();
+    //check if user is logged out and log in with the same user
+    await expect(page.locator(generalPage.btnUserInfo)).not.toBeVisible();
+    await page.waitForLoadState('networkidle');
+    await page.locator(generalPage.btnLogin).click();
+    await page.locator(generalPage.inpLoginEmail).fill(test.info().project.name + user.email)
+    await page.locator(generalPage.inpLoginPassword).fill(user.password)
+    await page.locator(generalPage.btnLoginSubmit).click();
+    await expect(page.locator(generalPage.btnLoginSubmit)).not.toBeVisible();
 
-    //check if user is logged in
-    await page.locator(generalPage.btnUserInfo).click();
-    await expect(page.locator(generalPage.txtUserEmail)).toHaveText(test.info().project.name + user.email);
+    //check if user is logged in
+    await page.locator(generalPage.btnUserInfo).click();
+    await expect(page.locator(generalPage.txtUserEmail)).toHaveText(test.info().project.name + user.email);
 
-    await deleteLoggedUser(page); //delete the user after the test is done
-    })
+    })
 
 }); 
-
