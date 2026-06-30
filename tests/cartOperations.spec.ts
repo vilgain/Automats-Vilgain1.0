@@ -4,6 +4,13 @@ import { generalPage } from '../data/pageObjects/generalPage';
 import { toastTexts } from '../data/staticData/toasts/toastTexts';
 import { cartPage } from '../data/pageObjects/cartPage';
 import { vouchers } from '../data/staticData/codes/vouchers';
+import { deleteCart } from '../actions/cartActions';
+
+test.describe('Cart operations', () => {
+
+test.afterEach(async ({ page }) => {
+    await deleteCart(page);
+  });
 
 test('should add some product to cart and check cart operations and content', async ({ page }) => {
     await page.goto('/');
@@ -39,4 +46,5 @@ test('should add some product to cart and check cart operations and content', as
     await expect(page.locator(generalPage.btnCartPlus)).toHaveCount(1);
     await page.locator(generalPage.btnCartPlus).click();
     await expect(page.locator(generalPage.inpCartQuantity)).toHaveValue('3');
-})  
+    })  
+});

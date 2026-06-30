@@ -5,4 +5,5 @@ export const cartPage = {
     btnDiscountSelect: '[data-pwid="btn_select_option"]',
     inpDiscountCode: '[data-pwid="inp_discount_code"]',
     btnDiscountConfirm: '[data-pwid="btn_discount_confirm"]',
+    btnShipping: '[data-pwid="btn_cart_shipping"]',
      } as const;
