@@ -3,4 +3,5 @@ export const cartInfo = {
     gls: 'GLS',
     card: 'Kartou online',
     paperPack: 'Zabalit pouze do papíru',
+    emptyCart: 'Košík je prázdný',
     } as const;

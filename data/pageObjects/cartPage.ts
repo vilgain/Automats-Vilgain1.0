@@ -22,4 +22,7 @@ export const cartPage = {
     txtDeliveryMethod: '[data-pwid="txt_cart_delivery_method"]',
     txtPaymentMethod: '[data-pwid="txt_cart_payment_method"]',
     txtDeliveryAddon: '[data-pwid="txt_cart_delivery_addon"]',
+    btnMoreOptions: '[data-pwid="btn_cart_option_more"]',
+    btnRemoveAllItems: '[data-pwid="btn_cart_option_remove_items"]',
+    txtEmptyCart: '[data-pwid="txt_empty_page"]',
      } as const;
