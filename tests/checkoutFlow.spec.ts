@@ -19,6 +19,7 @@ test('should search for a product and check its details are shown', async ({ pag
     //add product to cart and check the quantity is correct
     await page.locator(generalPage.txtProductModule).first().scrollIntoViewIfNeeded();
     await page.locator(generalPage.btnProduct).first().hover();
+    await page.waitForTimeout(300);
     await page.locator(generalPage.btnAddToCart).first().click();
     await expect(page.locator(generalPage.txtToast)).toContainText(toastTexts.cartAddItem);
     await page.locator(generalPage.btnCartOpen).click();

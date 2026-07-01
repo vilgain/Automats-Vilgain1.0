@@ -19,9 +19,11 @@ test('should add some product to cart and check cart operations and content', as
     //shoud add one product to cart and then a second one in quantity of 2 
     await page.locator(generalPage.txtProductModule).first().scrollIntoViewIfNeeded();
     await page.locator(generalPage.btnProduct).first().hover();
+    await page.waitForTimeout(300);
     await page.locator(generalPage.btnAddToCart).first().click();
     await expect(page.locator(generalPage.txtToast)).toContainText(toastTexts.cartAddItem);
     await page.locator(generalPage.btnProduct).nth(1).hover();
+    await page.waitForTimeout(300);
     await page.locator(generalPage.btnAddToCart).first().click();
     await expect(page.locator(generalPage.txtToast)).toContainText(toastTexts.cartAddItem);
     await page.locator(generalPage.btnCartPlus).nth(1).click();
